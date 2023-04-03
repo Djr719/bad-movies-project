@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Movie Locator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+        h1 {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        }
+    
+
+    .movie-card {
+        margin-bottom: 30px;
+    }
+
+    .movie-rating {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .movie-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .movie-description {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+.input-field {
+    margin-bottom: 20px;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="center-align">Bad Movies</h1>
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <input type="text" id="search" class="validate">
+                <label for="search">Search</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <select id="genre-filter">
+                    <option value="" disabled selected>Choose a genre</option>
+                    <option value="28">Action</option>
+                    <option value="35">Comedy</option>
+                    <option value="18">Drama</option>
+                    <option value="878">Sci-fi</option>
+                    <option value="10749">Romance</option>
+                    <option value="9648">Mystery</option>
+                    <option value="27">Horror</option>
+                </select>
+                
+                <label>Filter by Genre</label>
+            </div>
+        </div>
+        <div id="movie-list" class="row">
+            <!-- Movie cards show up here  -->
+        </div>
+    </div>
+ <script>
+       const apiKey = '39f23a391c6157c866eb13b5a33b4be5';
+        document.getElementById('search').addEventListener('input', function() {
+    searchMovies(this.value);
+});
+
+document.getElementById('genre-filter').addEventListener('change', function() {
+    filterMoviesByGenre(this.value);
+});
+
+function displayMovies(movies) {
+    const movieList = document.getElementById('movie-list');
+    movieList.innerHTML = '';
+
+    movies.forEach(movie => {
+        const movieCard = `
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title} poster">
+                    </div>
+                    <div class="card-content">
+                        <span class="movie-title">${movie.title}</span>
+                        <p class="movie-description">${movie.overview}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        movieList.innerHTML += movieCard;
+    });
+}
+
+// Fetch and display popular movies when search is empty
+fetchPopularMovies();
+
+function fetchMovies(url) {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            displayMovies(data.results);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+
+function searchMovies(query) {
+    if (query) {
+        const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}`;
+        fetchMovies(searchUrl);
+    } else {
+        // If search is empty only popular movies are shown
+        fetchPopularMovies();
+    }
+}
+
+function filterMoviesByGenre(genre) {
+    if (genre) {
+        const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genre}`;
+        fetchMovies(genreUrl);
+    } else {
+        // If no genre is selected, display the popular movies
+        fetchPopularMovies();
+    }
+}
+
+function fetchPopularMovies() {
+    const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
+    fetchMovies(popularUrl);
+}
+document.getElementById('search').addEventListener('input', function () {
+    searchMovies(this.value);
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const elems = document.querySelectorAll('select');
+    const instances = M.FormSelect.init(elems);
+
+    // Adds an event listener for the genre filter
+    instances[0].el.addEventListener('change', function () {
+        filterMoviesByGenre(this.value);
+    });
+});
+
+    </script>
+    </body>
+    </html>
+    
