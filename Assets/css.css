@@ -1,16 +1,25 @@
 :root {
     --pink: rgb(255, 0, 128);
-    --green : rgb(12, 248, 102);
+    --green: rgb(12, 248, 102);
     --black: rgb(0, 0, 0);
-    --gold: rgb(212, 175, 55); 
+    --gold: rgb(212, 175, 55);
     --purple: rgb(120, 0, 150);
     --blue: rgb(41, 255, 226);
     --orange: rgb(255, 81, 0);
     --red: rgba(255, 0, 0, 0.76);
-  }
-  title {text-align: center; font-family: Monstera Jam; font-size: 30px; color: var(--red);font-weight: bolder;}
-  h1 {text-align: left; font-family: Monstera Jam; font-size: 40px;font-weight: bolder;}
-  @font-face {
+}
+
+h1 {
+    text-align: center;
+    font-family: rocky_aoeregular;
+    font-size: 100px;
+    color: var(--red);
+    font-weight: bolder;
+    background-color: black;
+}
+
+
+@font-face {
     font-family: 'Monstera Jam';
     src: url('monstera-jam-font/MonsteraJam-rgZE8.ttf') format('woff2'),
         url('monstera-jam-font/MonsteraJam-rgZE8.ttf') format('woff');
@@ -18,37 +27,75 @@
     font-style: normal;
     font-display: auto;
     color: var(--red)
-    }
-    body {
-        font-family: Georgia, 'Times New Roman', Times, serif;
-        color: var(--red)
-    
-    }
-    h1 {
+}
+
+@font-face {
+    font-family: 'rocky_aoeregular';
+    src: url('Rocky\ AOE/Truetype/ROCKYAOE.ttf') format('woff2'),
+        url('Rocky\ AOE/Truetype/ROCKYAOE.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Other';
+    src: url('Other/Stranger\ back\ in\ the\ Night.ttf') format('woff2'),
+        url('Other/Stranger\ back\ in\ the\ Night.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'IndieFlower-Regular';
+    src: url('IndieFlower-Regular/IndieFlower-Regular.ttf') format('woff2'),
+        url('IndieFlower-Regular/IndieFlower-Regular.ttf') format('woff');
+    font-weight: normal;
+    font-style: normal;}
+    @font-face {
+        font-family: 'Rocky';
+        src: url('Rocky/Rocky\ Brush.woff') format('woff2'),
+            url('Rocky/Rocky\ Brush.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;}
+body {
+    font-family: 'Rocky';
+    color: var(--red);
+    background-color: black;
+}
+
+h1 {
     margin-top: 20px;
     margin-bottom: 40px;
-    }
+}
 
 
 .movie-card {
     margin-bottom: 30px;
+    background-color: black;
 }
 
 .movie-rating {
     font-size: 1.5rem;
     font-weight: bold;
+    background-color: black;
 }
 
 .movie-title {
-    font-size: 1.2rem;
+    font-size: 40px;
     font-weight: bold;
+    font-family: 'Rocky';
+    color: var(--red);
+    background-color: black;
 }
 
-.movie-description {
-    font-size: 1rem;
-    margin-top: 5px;
-    
+.movie-description, #movie-list {
+    font-size: 20px;
+    font-family: 'Rocky'
+    color: var(var(var(--red)));
+    background-color: var(--black)
 }
+
 .input-field {
-margin-bottom: 20px;
+    margin-bottom: 20px;
+    background-color: black;
 }
