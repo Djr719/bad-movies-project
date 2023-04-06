@@ -17,7 +17,7 @@ const tmdbData = await fetch(`https://api.themoviedb.org/3/movie/${tmdbMovieId}?
 const imdbId = tmdbData.imdb_id;
 
 if (imdbId) {
-    const omdbData = await fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=f4a92005`).then(response => response.json());
+    const omdbData = await fetch(`https://www.omdbapi.com/?i=${imdbId}&apikey=f4a92005`).then(response => response.json());
     return { ...movie, omdbData };
 } else {
     return null;
@@ -33,7 +33,7 @@ const filteredMovies = moviesWithRatings.filter(movie => movie !== null);
 filteredMovies.sort((a, b) => parseFloat(a.omdbData.imdbRating) - parseFloat(b.omdbData.imdbRating));
 
 // Set the threshold for the lowest-rated movies (e.g., top 5 lowest-rated)
-const lowestRatedMovies = filteredMovies.slice(0, 300);
+const lowestRatedMovies = filteredMovies.slice(0, 10);
 
 lowestRatedMovies.forEach(movie => {
     const movieCard = `
@@ -64,11 +64,11 @@ fetch(url)
 const moviePromises = data.results.map(async (movie) => {
 const tmdbMovieId = movie.id;
 
-const tmdbData = await fetch(`https://api.themoviedb.org/3/movie/${tmdbMovieId}?api_key=${apiKey}`).then(response => response.json());
+const tmdbData = await fetch(`http://api.themoviedb.org/3/movie/${tmdbMovieId}?api_key=${apiKey}`).then(response => response.json());
 const imdbId = tmdbData.imdb_id;
 
 if (imdbId) {
-  const omdbData = await fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=f4a92005`).then(response => response.json());
+    const omdbData = await fetch(`https://www.omdbapi.com/?i=${imdbId}&apikey=f4a92005`).then(response => response.json());
   return { ...movie, omdbData };
 } else {
   return null;
@@ -76,7 +76,7 @@ if (imdbId) {
 });
 
 Promise.all(moviePromises).then(moviesWithRatings => {
-const filteredMovies = moviesWithRatings.filter(movie => movie !== null && movie.omdbData && movie.omdbData.imdbRating);
+ const filteredMovies = moviesWithRatings.filter(movie => movie !== null && movie.poster_path && movie.omdbData && movie.omdbData.imdbRating);
 filteredMovies.sort((a, b) => parseFloat(a.omdbData.imdbRating) - parseFloat(b.omdbData.imdbRating));
 displayMovies(filteredMovies);
 });
@@ -99,7 +99,7 @@ fetchBadMovies();
 
 
 function searchMovies(query, page = 1) {
-if (query) {
+    if (query.trim()) {
 const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(query)}&sort_by=vote_average.asc&page=${page}`;
 fetchMovies(searchUrl);
 } else {
@@ -115,13 +115,6 @@ fetchMovies(genreUrl);
 } else {
 // If no genre is selected, display the bad movies
 fetchBadMovies(page);
-}
-}
-
-function fetchPopularMovies() {
-for (let page = 1; page <= 50; page++) {
-const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${page}`;
-fetchMovies(popularUrl);
 }
 }
 
