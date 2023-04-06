@@ -30,25 +30,37 @@
     }
 
 
-.movie-card {
-    margin-bottom: 30px;
+    .movie-card {
+        margin-bottom: 30px;
+    }
+
+    .movie-rating {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+   
+    #movie-list {
+    max-height: 800px;
+    overflow-y: auto;
 }
 
-.movie-rating {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
+    .movie-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
 
-.movie-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.movie-description {
-    font-size: 1rem;
-    margin-top: 5px;
+    .movie-description {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
     
-}
+    .movie-imdb-rating {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 5px;
+        color: #eb9e34;
+    }
+
 .input-field {
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }
