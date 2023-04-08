@@ -69,6 +69,7 @@ h1 {
 }
 
 
+<<<<<<< HEAD
 .movie-card {
     margin-bottom: 30px;
     background-color: black;
@@ -98,4 +99,39 @@ h1 {
 .input-field {
     margin-bottom: 20px;
     background-color: black;
+=======
+    .movie-card {
+        margin-bottom: 30px;
+    }
+
+    .movie-rating {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+   
+    #movie-list {
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+    .movie-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .movie-description {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+    
+    .movie-imdb-rating {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 5px;
+        color: #eb9e34;
+    }
+
+.input-field {
+    margin-bottom: 20px;
+>>>>>>> 8fae2b6cedff55e4ceb90eb37f2ad4f209a1c72c
 }

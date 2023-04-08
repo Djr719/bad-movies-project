@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bad Movie Locator</title>
+    <title>Bad Movie Locator - Find the worst movies of all time!</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="Assets/css.css">   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="/bad-movies-project/Assets/css.css/">
 </head>
 <body>
     <div class="container">
@@ -17,7 +18,7 @@
                 <input type="text" id="search" class="validate">
                 <label for="search">Search</label>
             </div>
-            <div class="input-field col s1 m6">
+            <div class="input-field col s12 m6">
                 <select id="genre-filter">
                     <option value="" disabled selected>Choose a genre</option>
                     <option value="28">Action</option>
@@ -35,9 +36,18 @@
         <div id="movie-list" class="row">
             <!-- Movie cards show up here  -->
         </div>
+        <div id="pagination">
+            <ul class="pagination center-align">
+              <li class="waves-effect" id="previous-page">
+                <a href="#!"><i class="material-icons">chevron_left</i></a>
+              </li>
+              <li class="waves-effect" id="next-page">
+                <a href="#!"><i class="material-icons">chevron_right</i></a>
+              </li>
+            </ul>
+          </div>
+          <script src="/bad-movies-project/Assets/javascript.js"></script>
+          
     </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-     <script src="assets/javascript.js"></script>   
     </body>
     </html>
-    
