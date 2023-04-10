@@ -82,6 +82,7 @@ h1 {
 }
 .input-field {
     margin-bottom: 20px;
+    background-color: white;
 }
 .movie-list {
     max-height: 800px;
