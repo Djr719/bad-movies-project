@@ -91,7 +91,7 @@ h1 {
 
 .movie-description, #movie-list {
     font-size: 20px;
-    font-family: 'Rocky'
+    font-family: 'Rocky';
     color: var(var(var(--red)));
     background-color: var(--black)
 }
