@@ -17,7 +17,7 @@ const tmdbData = await fetch(`https://api.themoviedb.org/3/movie/${tmdbMovieId}?
 const imdbId = tmdbData.imdb_id;
 
 if (imdbId) {
-    const omdbData = await fetch(`http://www.omdbapi.com/?i=${imdbId}&apikey=f4a92005`).then(response => response.json());
+    const omdbData = await fetch(`https://www.omdbapi.com/?i=${imdbId}&apikey=f4a92005`).then(response => response.json());
     return { ...movie, omdbData };
 } else {
     return null;
